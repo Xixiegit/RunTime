@@ -10,6 +10,11 @@ host = "192.168.1.106"
 port = 21043
 clients = {}
 
+    
+    
+    
+
+
 
 def connections():
     while True:
@@ -19,8 +24,11 @@ def connections():
         s.listen(2)
         c, address = s.accept()
         print(f"Connected to: {address}")
-        clients[address] = c
-        find(c)
+        clients =  {address}
+        
+        
+        for clients in clients:
+            find(c)
 
 
 def find(c):
@@ -102,6 +110,7 @@ def save_messages_to_json(messages):
     file_name = "User_data.json"
     with open(file_name, "w") as file:
         json.dump(messages, file, indent=4)
+
 
 
 threading.Thread(target=connections).start()
